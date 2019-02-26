@@ -1,0 +1,189 @@
+public class PasswordChangeModel
+{
+    public string NewPassword { get; set; }
+    public List<PasswordHistoryItem> PasswordHistoryItems { get; set; }
+    public string Username { get; set; }
+}
+
+public class PasswordHistoryItem
+{
+    public string PasswordText { get; set; }
+    public DateTime CreationDate { get; set; }
+}
+
+public class PasswordValidator
+{
+    private const int _minLength = 8;
+    static List<string> BlackList = new List<string> { "password", "qwerty", "abc123" };
+
+    bool IsValid(PasswordChangeModel passwordChangeModel)
+    {
+        if (passwordChangeModel.NewPassword.Length < _minLength ||
+            passwordChangeModel.NewPassword == passwordChangeModel.Username ||
+            (passwordChangeModel.PasswordHistoryItems != null &&
+            passwordChangeModel.PasswordHistoryItems.Contains(passwordChangeModel.NewPassword)) ||
+            (BlackList != null && BlackList.Contains(passwordChangeModel.NewPassword)))
+        {
+            return false;
+        }
+
+        return true;
+    }
+}
+
+
+Now, as an addition to the existing validation, we have to add a new rule:
+
+password cannot contain the following words: "password", "qwerty", "abc123"
+
+
+Other possible rules:
+
+max password length
+must contain special character
+can't have following digits
+must include uppercase
+must include lowercase
+must include 2 digits
+can't be the same as any of X last passwords set by user (mentioned above)
+and many many more
+
+public class PasswordChangeModel
+{
+    public string NewPassword { get; set; }
+    public List<PasswordHistoryItem> PasswordHistoryItems { get; set; }
+    public string Username { get; set; }
+}
+
+public class PasswordHistoryItem
+{
+    public string PasswordText { get; set; }
+    public DateTime CreationDate { get; set; }
+}
+
+public interface IValidator
+{
+    bool IsValid();
+}
+
+public interface IPasswordValidationRule
+{
+    bool IsValid(PasswordChangeModel passwordChangeModel);
+}
+
+public class PasswordMinLengthRule : IPasswordValidationRule
+{
+    private readonly int _minLength;
+
+    public PasswordMinLengthRule(int minLength)
+    {
+        _minLength = minLength;
+    }
+
+    public bool IsValid(PasswordChangeModel passwordChangeModel)
+    {
+        return passwordChangeModel.NewPassword.Length >= _minLength;
+    }
+}
+
+public class PasswordUsernameRule : IPasswordValidationRule
+{
+    public bool IsValid(PasswordChangeModel passwordChangeModel)
+    {
+        return passwordChangeModel.NewPassword != passwordChangeModel.Username;
+    }
+}
+
+public class PasswordHistoryRule : IPasswordValidationRule
+{
+    public bool IsValid(PasswordChangeModel passwordChangeModel)
+    {
+        return passwordChangeModel.PasswordHistoryItems == null || 
+            !passwordChangeModel.PasswordHistoryItems.Any
+            (x => x.PasswordText == passwordChangeModel.NewPassword);
+    }
+}
+
+public class PasswordValidator : IValidator
+{
+    private readonly List<IPasswordValidationRule> _validationRules;
+    private readonly PasswordChangeModel _passwordChangeModel;
+
+    public PasswordValidator(List<IPasswordValidationRule> validationRules, PasswordChangeModel passwordChangeModel)
+    {
+        this._validationRules = validationRules;
+        this._passwordChangeModel = passwordChangeModel;
+    }
+
+    public bool IsValid()
+    {
+        foreach (var validationRule in _validationRules)
+        {
+            if (!validationRule.IsValid(this._passwordChangeModel))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+Possible consumers with different rules each
+
+public class Consumer1
+{    
+    private int const MAXIMUM_PASSWORD_LENGTH = 20;
+
+
+    public void SomeMethod(PasswordChangeModel passwordChangeModel)
+    {
+        // some code
+        var passwordValidator = new PasswordValidator(this.GetPasswordValidationRules(),passwordChangeModel);
+        
+        if(_passwordValidator.IsValid())
+          Console.WriteLine("Success");
+        else
+          Console.WriteLine("Failure");
+
+        // some code
+    }
+    
+    private List<IPasswordValidationRule> GetPasswordValidationRules()
+    {
+        return new List<IPasswordValidationRule>() 
+        {
+          new PasswordMinLengthRule(MAXIMUM_PASSWORD_LENGTH),
+          new PasswordUsernameRule(),
+          new PasswordHistoryRule()
+        }
+    }
+    
+}
+
+public class Consumer2
+{
+    private int const MAXIMUM_PASSWORD_LENGTH = 10;
+
+
+    public void SomeMethod(PasswordChangeModel passwordChangeModel)
+    {
+        // some code
+        var passwordValidator = new PasswordValidator(this.GetPasswordValidationRules(),passwordChangeModel)
+        if(_passwordValidator.IsValid())
+          Console.WriteLine("Success");
+        else
+          Console.WriteLine("Failure");
+
+        // some code
+    }
+    
+    private List<IPasswordValidationRule> GetPasswordValidationRules()
+    {
+        return new List<IPasswordValidationRule>() 
+        {
+          new PasswordMinLengthRule(MAXIMUM_PASSWORD_LENGTH),
+          new PasswordHistoryRule()
+        }
+    }
+}

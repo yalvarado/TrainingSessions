@@ -1,0 +1,18 @@
+﻿@model BasicMvc.ViewModel.DoStuffViewModel
+
+@{
+    ViewBag.Title = "DoStuff Page";
+}
+
+<h2>DoStuff</h2>
+
+@using (Html.BeginForm("DoStuff", "Home", FormMethod.Post))
+{ 
+    @*@Html.ValidationSummary()*@
+    @Html.DisplayFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+    <input type="submit" value="Click Me!"/>
+
+}
+

@@ -1,0 +1,26 @@
+As that one is very easy I thought we could start working on a project that will be expanding over time... Cheap and Dirty WorldOfWarcraft  :slightly_smiling_face:
+
+Initially, it'll be a .netCore Console app, over time we'll make it an MVC website.
+
+So let's start with creating a RandomGenerator Class that we'll use extensively throughout our application.
+
+Create a folder call `Helpers` and add the RandomGenerator.cs class in there:
+
+```    public interface IRandomGenerator
+    {
+        int GetRandomNumber(int min, int max);
+    }
+
+    public class RandomGenerator : IRandomGenerator
+    {
+        private static readonly Random _randomInstance = new Random();
+        
+        public int GetRandomNumber(int min, int max)
+        {
+            return _randomInstance.Next(min, max);
+        }
+
+    }```
+ 
+
+Random is a .net class, so why are we creating a wrapper for that class instead of using it directly?

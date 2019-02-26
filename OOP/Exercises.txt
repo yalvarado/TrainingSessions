@@ -1,0 +1,25 @@
+SESSION 00
+------------------------------------------------------------------
+0.- In visual studio, create a project of type Console App
+
+1.- Create an Animal class that can be instanciated by passing two parameters, the animal's type as a string ("lion", "zebra", "dog", "cat", ...) and the animal's name (also as a string) ("John","Kate","Ali",...).
+
+2.- Amend the Animal class so that it ALSO allows to be instanciated by passing only one parameter, the animal's type and using "John" as the default name.
+
+3.- Add a public method called 
+
+public void DescribeMe() 
+{}
+
+That will print out to the screen the following message:
+
+"I am a XXX and my name is YYY"
+
+Where XXX will be the animal's type and YYY will be the animal's name.
+
+TIP: In order to write something to the screen you can use:
+
+Console.Writeline("This will be printed out to the console!!")
+
+It may be a good idea to use:  Console.Readline()
+to stop the execution of the application until the user presses a key or the console will close up before you can see the results.

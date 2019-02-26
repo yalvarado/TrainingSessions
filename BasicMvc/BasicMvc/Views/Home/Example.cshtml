@@ -1,0 +1,12 @@
+﻿@model BasicMvc.ViewModel.ExampleViewModel
+@{
+    ViewBag.Title = "Example";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Example</h2>
+
+@Html.LabelFor(m=> m.XtraProperty)
+@Html.DisplayFor(m => m.XtraProperty)
+
+@Html.EditorFor(m=> m.Person)

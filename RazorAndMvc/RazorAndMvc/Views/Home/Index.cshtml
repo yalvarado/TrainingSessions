@@ -1,0 +1,49 @@
+﻿@using RazorAndMvc.Infrastructure
+@model RazorAndMvc.ViewModels.HomeViewModel
+
+
+@functions
+{
+
+    int GetAge(DateTime dateOfBirth)
+    {
+        return DateTime.Today.Year - dateOfBirth.Year;
+    }
+
+}
+
+@{
+    int day = Model.DateOfBirth.Day;
+    int month = Model.DateOfBirth.Month;
+    var nextBirthday = new DateTime(DateTime.Now.Year, month, day);
+
+    if (nextBirthday.Date < DateTime.Today.Date)
+    {
+        nextBirthday = new DateTime(DateTime.Now.Year + 1, month, day);
+    }
+
+
+}
+
+<hr />
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            @Html.DisplayFor(m => m.FullName)
+        
+            <div class="row">
+                @Html.DisplayName("Age"):
+                @Html.DisplayName(GetAge(Model.DateOfBirth).ToString())
+            </div>
+
+            <div class="row">
+                @Html.DisplayName("Next Birthday"):
+                @Html.DisplayName(nextBirthday.ToString("ddd dd MMM yyyy"))
+            </div>
+            <div class="row">
+                @Html.DisplayName("Number of days Alive"):
+                @Html.GetNumberOfDaysAlive(Model.DateOfBirth)
+            </div>
+        </div>
+    </form>
+</div>

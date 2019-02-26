@@ -1,0 +1,69 @@
+Ok, the challenge for next week is slightly different to the previous ones.
+
+I'll give you the code to run and you'll need to create the classe(s) you'll need to be able to execute my code.
+
+Given the following class:
+======================================================
+
+public class Person
+{
+  public int Id { get; protected set; }
+  public string Name { get; protected set; }
+  
+  public Person(int id, string name)
+  {
+    this.Id = id;
+    this.Name = name;
+  }
+}
+
+======================================================
+
+and the following Main method:
+
+static void Main(string[] args)
+{
+
+  var peopleList = new List<Person>()
+  {
+    new Person(1,"John"),
+    new Person(2,"Jane")
+  }  
+
+
+  var documentList = new List<IDocument>()
+  {
+     new JsonDocument(peopleList),
+     new XmlDocument(peopleList),
+     new TextDocument(peopleList)
+  }
+
+  foreach(var document in documentList)
+  {
+    document.ShowOutput();
+  }
+
+  Console.WriteLine("");
+  Console.WriteLine("Press any key to finish");
+  Console.ReadLine();
+
+
+    
+}
+
+
+
+Expected Output:
+================
+
+Json Output:
+------------
+{ "person": { "id":"1", "name":"John"}, "person": { "id":"2", "name":"Jane"} }
+
+Xml Output:
+-----------
+<root><person id="1" name="John"/><person id="2" name="Jane"/></root>
+
+Text Output:
+------------
+person: id=1, name=John, person: id=2, name=Jane

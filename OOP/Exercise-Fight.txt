@@ -1,0 +1,117 @@
+EXERCISE 1
+----------
+
+```public class Fighter 
+{
+  public string Name { get; private set;}
+  public int Health { get; private set;
+  public int DamagePerAttack { get; private set; }
+  
+  public Fighter(string name, IRandomGenerator randomGenerator) 
+  {
+    this.Name = name;
+    this.Health = health;
+    this.DamagePerAttack = damagePerAttack;
+  }
+}```
+
+We are going to create a class that will take two fighters and make them fight against each other. They will both fight until one of them dies.
+
+The winner will be calculated based on the following formula:
+
+fighter1.Health -= fighter2.DamagePerAttack;
+fighter2.Health -= fighter1.DamagePerAttack;
+
+As this is happening, messages should be shown on the screen to indicate what's happening.
+$"{fighter1.Name} is attacking {fighter2.Name} and causing {fighter1.damagePerAttack} of damage, {fighter2.Name} health is now {fighter2.Health}"
+
+
+and this should continue until one of the two fighters runs out of health points. At that point the other fighter is considered the winner and a message should be printed on the screen as shown below:
+
+"fighter1.Name wins the battle against figher2.Name!"
+
+
+Health damage should be in the range 200 - 1000 points
+DamagePerAttack should be in the range 25 - 100
+
+EXERCISE 2
+----------
+The DamagePerAttack will be determined by the weapon, so depending on which weapon the warrior is using his/her damage per attack will vary.
+
+Create 3 weapons:
+
+Sword with a damagePerAttack=50;
+Knife with a damagePerAttack=25;
+Axe with a damagePerAttack=75;
+
+Modify our FigherClass so that by default it uses a knife but it also has a method that allows us to change weapon.
+
+Modify the DamagePerAttack property so that it's set to the value of the damagePerAttack property of the selected weapon for that fighter.
+
+
+EXERCISE 3
+----------
+
+Let's add some randomness to the attacks. Add the following class to your project:
+
+---------------------------
+```    
+    public class RandomGenerator
+    {
+        private static readonly Random _randomInstance = new Random();
+
+        
+        private RandomGenerator()
+        { }
+
+        public static int GetRandomNumber(int min, int max)
+        {
+            return _randomInstance.Next(min, max);
+        }
+        
+    }```
+---------------------------
+
+This can be used like: 
+
+`RandomGenerator.GetRandomNumber(1,10);`
+    
+The line above will generate a random number between 1 and 10.
+
+Now we are going to create a new method that can be used from our weapons to generate some extra bonus random damage for each attack with our weapon. This damage can be either positive or negative. You can use two calls to the random generator, one to get a number between 1 and 5 for example and another to get a number between 1 and 2 and then use 1 as + and 2 as -. i.e.  call1 = 7, call2 = 2 =>  -7 damage points,  call1=5, call2 = 1 => +5 damage points.
+
+The bonus damage per weapon will be a random number between 1 and 10
+
+
+EXERSISE 4
+----------
+
+Let's add some armor equipment. Add a new property to the fighter class called DeffensePerAttack.
+
+Create 3 different armor Items
+
+Chainmail with deffensePerAttack = 25
+Leather armor with deffensePerAttack = 15
+Cloth armor with deffensePerAttack = 5
+
+Modify the Fighting algorithm so that now it will work like below:
+fighter1.Health += fighter1.DeffensePerAttack - fighter2.DamagePerAttack;
+fighter2.Health += fighter2.DeffensePerAttack - fighter1.DamagePerAttack;
+
+By default all fighters will use cloth armor by default and they will have a method that will allow us to set their armor to something different.
+
+Set the fighter's DeffensePerAttack to the value of the DeffensePerAttack property in the armor.
+
+EXERCISE 5
+----------
+
+Create a variable in the fighter class to store the amount of gold they own and a public property that will allow anyone to get your gold if you are dead (health <=0)
+
+Modify the fight method so if one of the fighters kills the other, it calls a method in the other fighter to get the gold and adds that amount to his/her own.
+
+Default gold is 5 coins per fighter.
+
+
+
+Future... create shop selling weapons and armor, fighters can buy if they have money and sell if they want money.
+Create battlefield with 100s of fighters who makes the most money... different strategies buying weapons when having enough money... using a square battlefield only attacking people in the inmediate squares

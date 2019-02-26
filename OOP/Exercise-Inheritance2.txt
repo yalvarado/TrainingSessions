@@ -1,0 +1,48 @@
+Grandpa always had three habits 
+
+Grandpa takes the rubbish out
+Grandpa rides a bicycle
+Grandpa likes one specific food
+Grandpa likes one specific fruit
+
+Grandpa's children "Mom" and "uncle" inherit grandpa's habits.
+
+Mom implements:
+`LikesOneSpecificFood`
+and
+`RidesABicycle`
+
+
+
+Uncle implements:
+`TakeTheRubbishOut`
+and
+`LikesOneSpecificFruit`
+
+The grandchild (“Son”), inherits all the behaviors from his Mom. But he also takes the rubbish out like his Uncle.
+
+Please, complete the class that shows Son's behavior. Grandpa is an Interface declaring some methods. Mom and Uncle are classes that implement  Grandpa's methods. Son is the class you have to complete.
+
+
+Below is the implementation of the four methods
+
+
+```void TakeTheRubbishOut()
+{
+   Console.Writeline("takes the rubbish out");
+}
+
+void RidesABicycle()
+{
+   Console.Writeline("Rides a bicycle");
+}
+
+void LikesOneSpecificFood()
+{
+   Console.Writeline("Likes one specific food");
+}
+
+void LikesOneSpecificFruit()
+{
+   Console.Writeline("Likes one specific fruit");
+}```

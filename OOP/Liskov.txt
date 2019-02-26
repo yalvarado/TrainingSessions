@@ -1,0 +1,27 @@
+Barbara liskov
+
+
+public class SpecialIntegersBase
+{
+   public virtual bool IsValid(int i)
+   {
+      if(i<0)
+        return false;
+        
+      return true;
+   }
+   
+}
+
+Public class SpecialIntegersOverrides : SpecialIntegersBase
+{
+    public override bool IsValid(int i)
+    {
+        if(i<0 || i>10)
+          return false;
+          
+        return true;
+    
+    }
+
+}

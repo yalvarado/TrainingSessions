@@ -1,0 +1,15 @@
+Valid inputs
+
+Invalid inputs
+
+Errors, exceptions, and events
+
+Boundary conditions
+
+Everything that might break
+
+
+https://github.com/mwhelan/Katas
+
+
+Adapter, Repository

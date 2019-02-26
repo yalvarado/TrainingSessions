@@ -1,0 +1,115 @@
+C language:  Dennis Ritchie between 1969 and 1973 at Bell Labs
+C++ was developed by Bjarne Stroustrup at Bell Labs since 1979
+
+what a class is.
+What an object is.
+Difference between classes and objects.
+
+instanciating an object:
+class name: MyClass
+object name: myObject
+
+MyClass myObject = new MyClass();
+alternatively:
+var myObject = new MyClass()
+
+
+class concepts:
+members/fields
+readonly 
+methods
+constants
+properties
+contructors
+static
+
+
+Classes
+  - Access modifiers
+    - public
+    - private
+    - protected
+    - internal
+    
+
+  - Layout
+    - constants
+    - members (readonly)
+    - properties
+    - constructors
+    - public methods
+    - private helpers
+  
+  
+          /*          
+            STATIC: Test1=2, Test2=2
+            NON-STATIC: Test1=1, Test2=2
+
+            REFvsVAL: ExtraValue=3, Value=1 
+        */
+        
+Excercise: Create a class called MyFirstClass.cs with two public properties, Id (int) and Name (string)       
+  
+  - Overloading, overloading with constructors this(param1)
+  
+  
+  Abstraction - (abstraction of complex functionality) classes vs objects, classes abstractions, objects instances => address class, objects: employee address, customer address,...
+  Encapsulation (private and public) keep things private and give access to the data in the class via public methods 
+  Inheritance (re-usability)  overriding, hidding, base classes, protected, constructors calling base
+  Polymorphism (different behaviour)
+  
+  
+  
+Code Reuse and Recycling: Objects created for Object Oriented Programs can easily be reused in other programs.
+Encapsulation (part 1): Once an Object is created, knowledge of its implementation is not necessary for its use. In older programs, coders needed understand the details of a piece of code before using it (in this or another program).
+Encapsulation (part 2): Objects have the ability to hide certain parts of themselves from programmers. This prevents programmers from tampering with values they shouldn't. Additionally, the object controls how one interacts with it, preventing other kinds of errors. For example, a programmer (or another program) cannot set the width of a window to -400.
+Design Benefits: Large programs are very difficult to write. Object Oriented Programs force designers to go through an extensive planning phase, which makes for better designs with less flaws. In addition, once a program reaches a certain size, Object Oriented Programs are actually easier to program than non-Object Oriented ones.
+Software Maintenance: Programs are not disposable. Legacy code must be dealt with on a daily basis, either to be improved upon (for a new version of an exist piece of software) or made to work with newer computers and software. An Object Oriented Program is much easier to modify and maintain than a non-Object Oriented Program. So although a lot of work is spent before the program is written, less work is needed to maintain it over time.
+  
+  
+  
+  
+  
+  
+Create 3 classes, Dog, Fish and Bird that when called like below, show the output at the bottom
+(When the object is instanciated without a parameter it'll take the default value of "black")
+
+Program
+-------
+static void Main(string[] args)
+{
+    Dog redDog = new Dog("red");
+    Dog dog = new Dog();
+
+    Fish yellowFish = new Fish("yellow");
+    Fish fish = new Fish();
+
+    Bird blueBird = new Bird("blue");
+    Bird bird = new Bird();
+
+
+    redDog.Move();
+    dog.Move();
+
+    yellowFish.Move();
+    fish.Move();
+
+    blueBird.Move();
+    bird.Move();
+
+    Console.ReadKey();
+}
+
+
+
+  
+Output
+----------------  
+The red dog runs.
+The black dog runs.
+The yellow fish swims.
+The black fish swims.
+The blue bird flies.
+The black bird flies.
+
+tip: use Console.Writeline("");

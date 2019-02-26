@@ -1,0 +1,56 @@
+public interface ISessionChannel<TSession> { /*...*/ }
+public delegate TOutput Converter<TInput, TOutput>(TInput from);
+
+public int IComparer<T>() { return 0; }
+public delegate bool Predicate<T>(T item);
+
+
+public interface ISessionChannel<TSession>
+{
+    TSession Session { get; }
+}
+
+Constraint	Description
+where T: struct	The type argument must be a value type. Any value type except Nullable can be specified. See Using Nullable Types for more information.
+where T : class	The type argument must be a reference type; this applies also to any class, interface, delegate, or array type.
+where T : new()	The type argument must have a public parameterless constructor. When used together with other constraints, the new() constraint must be specified last.
+where T : <base class name>	The type argument must be or derive from the specified base class.
+where T : <interface name>	The type argument must be or implement the specified interface. Multiple interface constraints can be specified. The constraining interface can also be generic.
+where T : U	The type argument supplied for T must be or derive from the argument supplied for U.
+
+
+Constraining Multiple Parameters
+class Base { }
+class Test<T, U>
+    where U : struct
+    where T : Base, new() { }
+    
+    
+    
+static void Swap<T>(ref T lhs, ref T rhs)
+{
+    T temp;
+    temp = lhs;
+    lhs = rhs;
+    rhs = temp;
+}    
+
+public static void TestSwap()
+{
+    int a = 1;
+    int b = 2;
+
+    Swap<int>(ref a, ref b);
+    System.Console.WriteLine(a + " " + b);
+}
+
+You can also omit the type argument and the compiler will infer it. The following call to Swap is equivalent to the previous call:
+
+Swap(ref a, ref b);
+
+
+class SampleClass<T>
+{
+    void Swap(ref T lhs, ref T rhs) { }
+}
+

@@ -1,0 +1,7 @@
+1.- razor functions
+2.- c# code in views
+3.- Display templates
+4.- Html Helpers
+5.- Escaping the @ symbol  @@
+6.- Html.Raw
+7.- Reference: https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor#explicit-razor-expressions
