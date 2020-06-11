@@ -1,0 +1,9 @@
+# Repository 
+https://github.com/yalvarado/TrainingSessions/tree/master/GoodCode
+
+#Clean Code (2008)
+https://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_2?crid=2DTJ654LVKBS5&dchild=1&keywords=code+complete&qid=1591007690&sprefix=code+complete%2Caps%2C156&sr=8-2
+
+#Code complete 2 (2004) First edition in 1993
+https://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670/ref=sr_1_1?crid=2DTJ654LVKBS5&dchild=1&keywords=code+complete&qid=1591007690&sprefix=code+complete%2Caps%2C156&sr=8-1
+
