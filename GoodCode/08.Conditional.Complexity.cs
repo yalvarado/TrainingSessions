@@ -19,22 +19,22 @@ namespace TrainingSessions.GoodCode
             {
                 case "Calculation1":
                     if(number > 0)
-                        result = this.Calculation1();
+                        result = this.Calculate1();
                     else
-                        result = this.Calculation2();
+                        result = this.Calculate2();
 
                     break;
                 case "Calculation2":
                     if(number==0)
-                        result = this.Calculation1();
+                        result = this.Calculate1();
                     
-                    result = this.Calculation2();
+                    result = this.Calculate2();
                     break;
                 case "Calculation3":
                     if(number >= 0)
-                        result = this.Calculation1();
+                        result = this.Calculate();
 
-                    result = this.Calculation3();
+                    result = this.Calculate3();
                     break;
                 default:
                     return 0d;
@@ -55,17 +55,17 @@ namespace TrainingSessions.GoodCode
 
 
 
-        private double Calculation1()
+        private double Calculate1()
         {
             return 1d;
         }
 
-        private double Calculation2()
+        private double Calculate2()
         {
             return 1d;
         }
 
-        private double Calculation3()
+        private double Calculate3()
         {
             return 1d;
         }
