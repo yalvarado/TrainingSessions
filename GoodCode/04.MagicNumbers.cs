@@ -31,18 +31,18 @@ namespace TrainingSessions.GoodCode
         }
 
 
-        private double CalculateHourlySalary(double anualSalary)
+        private double CalculateHourlySalary(double annualSalary)
         {
-            return anualSalary/2912;
+            return annualSalary/2912;
         }
         
-        private double CalculateHourlySalaryV2(double anualSalary)
+        private double CalculateHourlySalaryV2(double annualSalary)
         {
-            return anualSalary/(52*7*8);
+            return annualSalary/(52*7*8);
         }
-        private double CalculateHourlySalaryV3(double anualSalary)
+        private double CalculateHourlySalaryV3(double annualSalary)
         {
-            return anualSalary/(WeeksInAYear * DaysInAWeek * WorkingHoursInADay);
+            return annualSalary/(WeeksInAYear * DaysInAWeek * WorkingHoursInADay);
         }
     }
 }
