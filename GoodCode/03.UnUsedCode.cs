@@ -8,11 +8,6 @@ namespace TrainingSessions.GoodCode
         //     return a * (1+(b/100))^c;
         // }
 
-
-        public double OldGetFutureValue(decimal a, decimal b, int c)
-        {
-            return a * (1+(b/100))^c;
-        }
         
         public double GetFutureValue(decimal presentValue, decimal growthRate, int years)
         {
