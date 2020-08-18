@@ -1,11 +1,17 @@
 ﻿TDD
 
-Good book
+# Good book
+![](The.Art.Of.Unit.Testing.png)
 https://www.amazon.co.uk/Art-Unit-Testing-examples/dp/1617290890/ref=pd_rhf_se_p_img_1?_encoding=UTF8&psc=1&refRID=9V0G720TEGHE0WY5TCBV
 
-Good articles
-http://www.butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd
-http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata
+
+# Good articles
+- http://www.butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd
+
+- http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata
+
+
+# The basics of TDD
 
 **Red** 
 - A common mistake for many people, new to TDD, is to gloss over the need to see the test fail first. The red is extremely valuable feedback that tells us our assumptions still hold true. Once in a while, they won't, and you'll have saved yourself a lot of time by finding that out immediately.
