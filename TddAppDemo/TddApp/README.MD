@@ -8,7 +8,7 @@ http://www.butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd
 http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata
 
 **Red** 
-- A common mistake for newbies to TDD is to gloss over the need to see the test fail first. It's part of keeping on course; the red is extremely valuable feedback that tells us our assumptions still hold true. Once in a while, they won't, and you'll have saved yourself a lot of time by finding that out immediately.
+- A common mistake for many people, new to TDD, is to gloss over the need to see the test fail first. The red is extremely valuable feedback that tells us our assumptions still hold true. Once in a while, they won't, and you'll have saved yourself a lot of time by finding that out immediately.
 
 **Green** 
 - Keep rough track of how long it takes you to derive a solution that passes all your tests. If you're taking 5-10 minutes on average, or more, start figuring out ways to take smaller steps.
