@@ -1,5 +1,8 @@
 ﻿namespace TddApp.TestObjectTypes.Spy
 {
+    /// <summary>
+    /// The DoStuff method send an email only if the supplied number is an even number.
+    /// </summary>
     public class SpyExampleProgram
     {
         private readonly IEmail _emailServer;
