@@ -15,7 +15,7 @@ namespace TddAppTests.TestObjectTypes
         public void TestTheDummyExample()
         {
             var mockSomething = new Mock<IDummyExample>();
-            mockSomething.Setup(_ => _.GetSomething(It.IsAny<DummyDataExample>())).Returns(string.Empty);
+            mockSomething.Setup(_ => _.GetSomething(It.IsAny<IDummyData>())).Returns(string.Empty);
 
             var myProgram = new DummyExampleProgram(mockSomething.Object);
             var result = myProgram.DoSomeStuff(new DummyDataExample());

@@ -12,7 +12,7 @@ namespace TddApp.TestObjectTypes.Dummy
         }
 
         // This method requires a not null DummyExample object or it'll fail
-        public string DoSomeStuff(DummyDataExample exampleData)
+        public string DoSomeStuff(IDummyData exampleData)
         {
             if(exampleData==null)
                 throw new Exception("Shouldn't be null");
